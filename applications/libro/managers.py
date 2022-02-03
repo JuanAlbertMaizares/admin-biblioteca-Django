@@ -1,3 +1,4 @@
+from django.db.models import Count 
 from django.db.models import Q
 from django.db import models
 
@@ -16,3 +17,12 @@ class CategoriaManager(models.Manager):
         return self.filter(
             categoria_libro__autores__id = autor
         )
+    def listar_categoria(self):
+        resultado = self.annotate(
+            num_libros = Count('categoria_libro')
+        )
+        for r in resultado:
+            print('*************')
+            print(r, r.num_libros)
+            
+        return resultado
