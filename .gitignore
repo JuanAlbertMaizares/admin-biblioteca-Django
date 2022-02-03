@@ -1,4 +1,8 @@
 .idea/
 applications/autor/migrations/
+applications/autor/__pycache__/
 applications/lector/migrations/
+applications/lector/__pycache__/
 applications/libro/migrations/
+applications/libro/__pycache__/
+Biblioteca/__pycache__/

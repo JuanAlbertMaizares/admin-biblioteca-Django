@@ -12,4 +12,4 @@ class Autor(models.Model):
     objects = AutorManager()
     #METODOS
     def __str__(self):
-        return self.nombre + '-'
+        return self.nombre + '-' + str(self.id)
