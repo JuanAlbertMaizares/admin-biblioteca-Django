@@ -23,6 +23,11 @@ class Libro(models.Model):
     visitas = models.PositiveIntegerField()
     #MANAGER
     objects = LibroManager()
+    class Meta:
+        verbose_name = 'Libro'
+        verbose_name_plural = 'Libros'
+        ordering = ['titulo', 'fecha']
+    
     def __str__(self):
         return str(self.id) + '-' + self.titulo
 
