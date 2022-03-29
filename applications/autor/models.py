@@ -11,8 +11,8 @@ class Persona (models.Model):
     class Meta:
         abstract = True
 class Autor(Persona):
-    #CAMPOS
-    
+    #CAMPOS que no estan en Persona
+    pseudonimo = models.CharField('pseudonimo', max_length=50, blank=True)
     #MANAGER
     objects = AutorManager()
     #METODOS
