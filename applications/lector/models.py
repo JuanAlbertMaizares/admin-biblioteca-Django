@@ -17,5 +17,11 @@ class Prestamo(models.Model):
     devuelto = models.BooleanField()
     #MANAGER
     objects = PrestamoManager()
+    #SAVE NEW
+    def save(self, *args, **kwargs):
+        self.libro.stok = self.libro.stok - 1
+        self.libro.save() 
+        super(Prestamo, self).save(*args, **kwargs) 
+
     def __str__(self):
         return 'ID: ' + str(self.id) + ' - Lector: ' + self.lector.nombres + ' - Libro: ' + self.libro.titulo
