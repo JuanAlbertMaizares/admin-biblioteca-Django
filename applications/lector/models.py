@@ -1,9 +1,10 @@
 from tabnanny import verbose
 from django.db import models
+from django.db.models.signals import post_delete
 from applications.libro.models import Libro
 from applications.autor.models import Persona
 from .managers import PrestamoManager
-
+from .signals import update_libro_stok
 # Create your models here.
 class Lector(Persona):
     class Meta:
@@ -25,3 +26,6 @@ class Prestamo(models.Model):
 
     def __str__(self):
         return 'ID: ' + str(self.id) + ' - Lector: ' + self.lector.nombres + ' - Libro: ' + self.libro.titulo
+
+
+post_delete.connect(update_libro_stok, sender=Prestamo)
